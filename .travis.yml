@@ -1,0 +1,25 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      compiler: g++
+    - os: linux
+      compiler: clang
+    - os: osx
+      compiler: g++
+    - os: osx
+      compiler: clang
+
+script: cmake -DBUILD_TESTS=ON . -Bbuild && cmake --build build
+
+branches:
+ only:
+  - master
+  - dev
+
+dist: trusty
+install: true
+
+notifications:
+  email: false

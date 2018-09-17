@@ -4,6 +4,7 @@
 #include <random>
 #include <ctime>
 #include <vector>
+#include <cstring>
 
 #define ASSERT_TRUE {std::cout << "Passed" << std::endl; passed++;} else {std::cout << "Failed" << std::endl; failed++;}
 #define ASSERT_FALSE {std::cout << "Failed" << std::endl; failed++;} else {std::cout << "Passed" << std::endl; passed++;}
@@ -186,5 +187,7 @@ int main(int argc, char const *argv[])
 
 
     std::cout << std::endl << "Finished. Passed " << passed << "/" << passed+failed << " tests." << std::endl;
-    return 0;
+    
+    if (failed > 0) return 1;
+    else return 0;
 }

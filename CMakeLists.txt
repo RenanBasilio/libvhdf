@@ -7,20 +7,14 @@
 cmake_minimum_required(VERSION 3.9)
 project(vhdf
         DESCRIPTION "Virtual hard disk file library."
-        VERSION 0.0.0)
+        VERSION 1.0.0)
 
 include(GNUInstallDirs)
-enable_language(C)
+enable_language(CXX)
+set(CMAKE_CXX_STANDARD 11)
 
 # Add header directory to project
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
-# Add a submodule to the project
-# include(libs/*/)
-
-# Add an external library to the project
-# find_package(LIB REQUIRED)
-# include_directories(${LIB_INCLUDE_DIRS})
 
 # Declare source files for build
 set(
@@ -53,21 +47,9 @@ add_definitions(-DLIBVHDF_EXPORTS)
 target_include_directories(${LIB_NAME} PUBLIC ${INCLUDE_DIRECTORIES})
 target_include_directories(${LIB_NAME} PUBLIC include)
 
+install(TARGETS ${LIB_NAME} DESTINATION lib)
+
 option(BUILD_TESTS "Build Tests." OFF)
 if(BUILD_TESTS)
     include(test/CMakeTests.cmake)
 endif(BUILD_TESTS)
-
-# Link with an external package
-# target_link_libraries(${EXE_NAME} ${LIB_LIBRARIES})
-
-# Link with a submodule
-# target_link_libraries(${EXE_NAME} ${SUBPROJECT_NAME})
-
-# Copy dynamic libraries to executable directory if necessary
-# add_custom_command(
-#     TARGET ${PROJECT_NAME} POST_BUILD
-#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-#         ${LIB_SHARED_LIB}
-#         $<TARGET_FILE_DIR:${PROJECT_NAME}>
-# )

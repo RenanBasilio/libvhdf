@@ -28,7 +28,7 @@ namespace vhdf
      * @param {nosparce} Whether to force writing garbage data to the created file. This will keep the system from treating it as sparse and avoid fragmentation as it grows.
      * @return A descriptor for the opened disk.
     */
-    LIBVHDF_API int openDisk(char* filename, size_t nbytes = 0, bool nosparce = false);
+    LIBVHDF_API int openDisk(const char* filename, size_t nbytes = 0, bool nosparce = false);
 
     /**
      * Closes the disk described by "disk".

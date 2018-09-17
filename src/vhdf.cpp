@@ -10,7 +10,7 @@ namespace vhdf
 
     struct VHD
     {
-        char* name;
+        const char* name;
         size_t size;            // The size of the disk in bytes
         FILE* file;             // The file pointer to the disk file
     };
@@ -18,7 +18,7 @@ namespace vhdf
     std::vector<VHD*> disks = std::vector<VHD*>();
     std::map<std::string, int> disks_open = std::map<std::string, int>();
 
-    int openDisk(char* filename, size_t nbytes, bool nosparse) {
+    int openDisk(const char* filename, size_t nbytes, bool nosparse) {
         
         if(disks_open.find(filename) != disks_open.end()) return disks_open[filename];
 

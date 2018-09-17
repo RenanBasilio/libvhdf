@@ -1,0 +1,62 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Make",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "cmake",
+            "args": [
+                "-DBUILD_TESTS=ON",
+                ".", "-Bbuild"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Build (Debug)",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "cmake",
+            "args": [
+                "--build", "build"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build (Release)",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": "cmake",
+            "args": [
+                "--build" , "build",
+                "--config", "Release"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Test",
+            "type": "shell",
+            "group": "test",
+            "dependsOn": "Build (Debug)",
+            "options": {
+                "cwd": "./build/Debug"
+            },
+            "command": "./tests.exe"
+        }
+    ]
+}

@@ -1,17 +1,13 @@
 language: cpp
 
-matrix:
-  include:
-    - os: linux
-      compiler: g++
-    - os: linux
-      compiler: clang
-    - os: osx
-      compiler: g++
-    - os: osx
-      compiler: clang
-
-script: cmake -DBUILD_TESTS=ON . -Bbuild && cmake --build build
+os:
+  - linux
+compiler:
+  - g++
+  - clang
+script:
+  - cmake -DBUILD_TESTS=ON . -Bbuild && cmake --build build && ./build/tests
+  - libtoolize && aclocal && autoconf && automake --add-missing && ./configure && make && ./tests
 
 branches:
  only:

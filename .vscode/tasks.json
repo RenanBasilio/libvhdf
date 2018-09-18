@@ -53,10 +53,24 @@
             "type": "shell",
             "group": "test",
             "dependsOn": "Build (Debug)",
-            "options": {
-                "cwd": "./build/Debug"
+            "windows": {
+                "options": {
+                    "cwd": "./build/Debug"
+                },
+                "command": "./tests.exe"
             },
-            "command": "./tests.exe"
+            "linux": {
+                "options": {
+                    "cwd": "./build"
+                },
+                "command": "./tests"
+            },
+            "osx": {
+                "options": {
+                    "cwd": "./build"
+                },
+                "command": "./tests"
+            }
         }
     ]
 }

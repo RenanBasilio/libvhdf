@@ -92,5 +92,10 @@ namespace vhdf
         return 0;
     }
 
-    void syncDisk() {};
+    void syncDisk() {
+        for (size_t i = 0; i < disks.size(); i++)
+        {
+            fflush(disks[i]->file);
+        }
+    };
 }
